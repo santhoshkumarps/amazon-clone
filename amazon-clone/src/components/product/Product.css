@@ -35,3 +35,6 @@
     margin-top: 5px;
 }
 
+.product__rating{
+    display: flex;
+}
