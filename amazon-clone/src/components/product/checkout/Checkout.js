@@ -8,8 +8,8 @@ import Subtotal from './Subtotal/Subtotal'
 function Checkout() {
 
     // eslint-disable-next-line no-unused-vars
-    const [{basket},dispatch] = useStateValue();
-
+    const [{basket,user},dispatch] = useStateValue();
+    const username = user?.email;
   return (
     <div className='checkout'>
         <div className="checkout__left">
@@ -17,7 +17,8 @@ function Checkout() {
                 className='checkout__ad' 
                 src='https://images-eu.ssl-images-amazon.com/images/G/31/Events/img22/Jupiter/Pc_Affordability-Stripe_1500x100.jpg'
                 alt=''/>
-                <div>
+                <div>{ user &&
+                    <h3>Hello, {username?.substring(0,username?.length-10)}</h3>}
                     <h2 className="checkout__title">Your shopping Basket</h2>
                     {
                         basket.map(item=>(

@@ -9,6 +9,8 @@ import { auth } from '../../firebase-config';
 function Header() {
 
     const [{basket,user},dispatch] = useStateValue();
+    let userId = user?.email;
+    let username = userId?.substring(0,userId?.length-10);
 
   const handleAuthentication=()=>{
     if (user) {
@@ -37,7 +39,7 @@ function Header() {
         <div className='header__nav'>
              <Link to={!user && "/login"}>           {/* redirect to Login page if there is no user  */}
                 <div onClick={handleAuthentication} className='header__option'>
-                    <span className='header__optionLineOne'>Hello Guest</span>
+                    <span className='header__optionLineOne'>Hello {user ? username : 'Guest'}</span>
                     <span className='header__optionLineTwo'>{
                         user ? 'Sign Out' : 'Sign in'
                     }</span>
